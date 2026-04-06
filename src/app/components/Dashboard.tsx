@@ -39,7 +39,7 @@ export function Dashboard() {
     <div>
       {/* Success Toast */}
       {showSuccessToast && (
-        <div className="fixed top-6 right-6 bg-white shadow-lg rounded-lg p-4 flex items-center gap-3 z-50 border border-gray-200">
+        <div className="fixed top-4 right-4 left-4 sm:left-auto sm:top-6 sm:right-6 bg-white shadow-lg rounded-lg p-3 sm:p-4 flex items-center gap-3 z-50 border border-gray-200">
           <CheckCircle className="w-5 h-5 text-green-500" />
           <span className="text-gray-900">登录成功</span>
           <button
@@ -51,17 +51,17 @@ export function Dashboard() {
         </div>
       )}
 
-      <h1 className="text-2xl font-semibold text-gray-900 mb-6">账户概览</h1>
+      <h1 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">账户概览</h1>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-4 gap-6 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 mb-6">
         {stats.map((stat, idx) => (
           <StatCard key={idx} {...stat} />
         ))}
       </div>
 
       {/* Charts and Announcements */}
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6">
         <div className="col-span-1 space-y-6">
           <ConsumptionChart />
           <CardQuantity />

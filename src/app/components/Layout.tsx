@@ -32,13 +32,13 @@ export function Layout() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-blue-600 text-white px-6 py-3 text-sm">
+      <header className="bg-blue-600 text-white px-4 py-2 text-xs sm:px-6 sm:py-3 sm:text-sm">
         Card Usage Guidelines: • Chargeback rate must be kept below 20% • Refund rate must remain under 10% • Usage is strictly prohibited in countries such as China, Russia, and Myanmar • For corporate clients with high card usage, please contact your account manager for potential discounts
       </header>
 
-      <div className="flex">
+      <div className="flex lg:flex-row">
         {/* Sidebar */}
-        <aside className="w-64 bg-white min-h-screen shadow-sm">
+        <aside className="hidden lg:block w-64 bg-white min-h-screen shadow-sm">
           {/* Logo */}
           <div className="p-6">
             <div className="text-3xl font-bold text-blue-500">VCC</div>
@@ -91,15 +91,38 @@ export function Layout() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-8">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8">
+          {/* Mobile quick navigation */}
+          <nav className="mb-4 lg:hidden">
+            <div className="flex gap-2 overflow-x-auto pb-1">
+              {menuItems.flatMap((section) =>
+                section.items.length
+                  ? section.items
+                  : [{ name: section.category, icon: section.icon, path: section.path }],
+              ).map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`shrink-0 inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
+                    location.pathname === item.path
+                      ? "bg-blue-600 text-white"
+                      : "bg-white text-gray-700 border border-gray-200"
+                  }`}
+                >
+                  <item.icon className="w-4 h-4" />
+                  <span>{item.name}</span>
+                </Link>
+              ))}
+            </div>
+          </nav>
           <Outlet />
         </main>
       </div>
 
       {/* Customer Service Button */}
-      <button className="fixed bottom-8 left-8 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+      <button className="fixed bottom-4 left-4 sm:bottom-8 sm:left-8 bg-blue-600 text-white rounded-full p-3 sm:p-4 shadow-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
         <MessageCircle className="w-6 h-6" />
-        <span className="text-sm">在线客服👋</span>
+        <span className="hidden sm:inline text-sm">在线客服👋</span>
       </button>
     </div>
   );

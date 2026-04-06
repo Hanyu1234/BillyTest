@@ -36,8 +36,8 @@ export function ApplyCard() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-semibold text-gray-900">立即申请</h1>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
+        <h1 className="text-xl sm:text-2xl font-semibold text-gray-900">立即申请</h1>
         <div className="flex items-center gap-3">
           <button className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
             <Copy className="w-5 h-5" />
@@ -51,9 +51,9 @@ export function ApplyCard() {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm p-8">
+      <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8">
         {/* Tabs */}
-        <div className="flex gap-8 border-b border-gray-200 mb-8">
+        <div className="flex gap-4 sm:gap-8 border-b border-gray-200 mb-6 sm:mb-8 overflow-x-auto">
           <button
             onClick={() => setActiveTab("single")}
             className={`pb-3 px-1 relative ${
@@ -90,7 +90,7 @@ export function ApplyCard() {
           <label className="block text-sm font-medium text-gray-700 mb-3">
             选择卡段
           </label>
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4 flex-wrap">
             {cardOptions.map((option) => (
               <button
                 key={option.value}
@@ -119,7 +119,7 @@ export function ApplyCard() {
             </button>
           </div>
 
-          <div className="grid grid-cols-3 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 <span className="text-red-500">* </span>First name
@@ -158,7 +158,7 @@ export function ApplyCard() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 <span className="text-red-500">* </span>City
@@ -201,7 +201,7 @@ export function ApplyCard() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 <span className="text-red-500">* </span>充值金额
@@ -229,11 +229,11 @@ export function ApplyCard() {
         </div>
 
         {/* Cost Summary and Submit */}
-        <div className="flex items-center justify-between pt-6 border-t border-gray-200">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pt-6 border-t border-gray-200">
           <div className="text-sm text-gray-600">
             费用预估：开卡费: ${costs.cardFee.toFixed(2)} + 充值: ${costs.recharge.toFixed(2)} + 服务费: ${costs.serviceFee.toFixed(2)} = ${costs.total.toFixed(2)}
           </div>
-          <button className="px-8 py-2.5 bg-gray-100 text-gray-400 rounded-lg cursor-not-allowed">
+          <button className="w-full sm:w-auto px-8 py-2.5 bg-gray-100 text-gray-400 rounded-lg cursor-not-allowed">
             联系客户经理或在线客服开通
           </button>
         </div>

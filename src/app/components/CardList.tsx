@@ -90,8 +90,8 @@ export function CardList() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-semibold text-gray-900">卡片列表</h1>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
+        <h1 className="text-xl sm:text-2xl font-semibold text-gray-900">卡片列表</h1>
         <div className="flex items-center gap-3">
           <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
             <CreditCard className="w-4 h-4" />
@@ -104,8 +104,8 @@ export function CardList() {
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-        <div className="flex items-center gap-4">
+      <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 mb-6">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-4">
           <div className="flex-1 relative">
             <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             <input
@@ -119,7 +119,7 @@ export function CardList() {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+            className="w-full lg:w-auto px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
           >
             <option value="all">全部状态</option>
             <option value="active">在线</option>
@@ -134,7 +134,7 @@ export function CardList() {
       </div>
 
       {/* Stats Summary */}
-      <div className="grid grid-cols-4 gap-6 mb-6">
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 mb-6">
         <div className="bg-white rounded-lg p-6 shadow-sm">
           <div className="text-sm text-gray-500 mb-1">总卡片数</div>
           <div className="text-2xl font-semibold text-gray-900">{mockCards.length}</div>
@@ -161,7 +161,8 @@ export function CardList() {
 
       {/* Cards Table */}
       <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-        <table className="w-full">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[900px]">
           <thead className="bg-gray-50 border-b border-gray-200">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -229,6 +230,7 @@ export function CardList() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );
